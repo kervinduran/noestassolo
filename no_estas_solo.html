@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>No estás solo · Directorio de apoyo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Paleta Kervin Duran, en versión suavizada y calmada */
+    --cream:#F5F5FB;        /* base, de #f9f9f9 con leve matiz frío */
+    --cream-deep:#E9EAF6;
+    --ink:#2C3556;          /* navy suavizado, de #091a3e */
+    --ink-soft:#5E6688;
+    --clay:#E68066;         /* coral, de #fe4a00 desaturado */
+    --clay-deep:#D26A4E;
+    --sage:#8587CF;         /* periwinkle, de #4b3fe5 suavizado */
+    --sage-deep:#5C61A6;    /* azul, de #191e97 suavizado */
+    --rose:#D9CEEC;
+    --amber:#EEB06C;        /* ámbar suave, de #ff9424 */
+    --card:#FFFFFF;
+    --line:#E5E5F1;
+    --shadow:rgba(44,53,86,.13);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Mulish',sans-serif;
+    color:var(--ink);
+    line-height:1.65;
+    background:
+      radial-gradient(1100px 600px at 85% -5%, #FBE3DA 0%, transparent 55%),
+      radial-gradient(900px 700px at -10% 25%, #E7E7F7 0%, transparent 50%),
+      radial-gradient(800px 800px at 50% 120%, #E1E6F6 0%, transparent 55%),
+      var(--cream);
+    background-attachment:fixed;
+    min-height:100vh;
+    padding:clamp(20px,5vw,64px) 18px 64px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* subtle paper grain */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    pointer-events:none;
+    opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    z-index:0;
+  }
+
+  .wrap{
+    position:relative;
+    z-index:1;
+    max-width:680px;
+    margin:0 auto;
+  }
+
+  /* ---------- header ---------- */
+  header{
+    text-align:center;
+    padding:clamp(24px,5vw,40px) 8px clamp(28px,5vw,44px);
+    animation:rise .9s ease both;
+  }
+  .eyebrow{
+    display:inline-block;
+    font-size:.78rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--clay-deep);
+    font-weight:700;
+    margin-bottom:18px;
+  }
+  .eyebrow::before,.eyebrow::after{
+    content:"";
+    display:inline-block;
+    width:26px;height:1px;
+    background:var(--clay);
+    vertical-align:middle;
+    margin:0 12px;
+    opacity:.6;
+  }
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:clamp(2.1rem,7vw,3.2rem);
+    line-height:1.08;
+    letter-spacing:-.01em;
+    color:var(--ink);
+    margin-bottom:20px;
+  }
+  h1 em{
+    font-style:italic;
+    color:var(--clay-deep);
+  }
+  .lede{
+    font-size:clamp(1rem,2.6vw,1.12rem);
+    color:var(--ink-soft);
+    max-width:48ch;
+    margin:0 auto;
+  }
+  .lede strong{
+    color:var(--sage-deep);
+    font-weight:700;
+  }
+
+  /* ---------- sections ---------- */
+  section{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:clamp(20px,4vw,30px);
+    margin-bottom:18px;
+    box-shadow:0 14px 34px -22px var(--shadow);
+    animation:rise .9s ease both;
+  }
+  section:nth-of-type(1){animation-delay:.08s;}
+  section:nth-of-type(2){animation-delay:.14s;}
+  section:nth-of-type(3){animation-delay:.20s;}
+  section:nth-of-type(4){animation-delay:.26s;}
+  section:nth-of-type(5){animation-delay:.32s;}
+  section:nth-of-type(6){animation-delay:.38s;}
+  section:nth-of-type(7){animation-delay:.44s;}
+
+  .cat{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:1.22rem;
+    color:var(--ink);
+    margin-bottom:18px;
+  }
+  .dot{
+    width:10px;height:10px;border-radius:50%;
+    flex:none;
+    background:var(--clay);
+  }
+  section.sage .dot{background:var(--sage);}
+  section.amber .dot{background:var(--amber);}
+
+  ul{list-style:none;display:flex;flex-direction:column;gap:16px;}
+  li{
+    padding-left:20px;
+    position:relative;
+  }
+  li::before{
+    content:"";
+    position:absolute;
+    left:0;top:.62em;
+    width:7px;height:7px;border-radius:50%;
+    background:var(--rose);
+    box-shadow:0 0 0 4px rgba(217,206,236,.4);
+  }
+  .name{
+    font-weight:700;
+    color:var(--ink);
+  }
+  .contact{
+    color:var(--clay-deep);
+    font-weight:700;
+    text-decoration:none;
+    border-bottom:1.5px solid rgba(210,106,78,.3);
+    transition:border-color .2s,color .2s;
+    white-space:nowrap;
+  }
+  .contact:hover{color:var(--clay);border-color:var(--clay);}
+  .desc{
+    display:block;
+    color:var(--ink-soft);
+    font-size:.96rem;
+    margin-top:3px;
+  }
+
+  /* apps */
+  section.apps .applink{
+    color:var(--sage-deep);
+    font-weight:700;
+    text-decoration:none;
+    border-bottom:1.5px solid rgba(133,135,207,.4);
+    transition:border-color .2s,color .2s;
+  }
+  section.apps .applink:hover{color:var(--sage);border-color:var(--sage);}
+  section.apps li::before{background:var(--sage);box-shadow:0 0 0 4px rgba(133,135,207,.22);}
+
+  .note{
+    margin-top:20px;
+    padding:16px 18px;
+    background:linear-gradient(180deg,#EDEDF7,#E6E7F4);
+    border-radius:16px;
+    font-size:.92rem;
+    color:var(--ink-soft);
+    border:1px solid var(--line);
+  }
+  .note strong{color:var(--sage-deep);}
+
+  /* ---------- Lumi + bloque importante ---------- */
+  .important{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:linear-gradient(180deg,#FBE8E0,#F7DDD2);
+    border:1.6px dashed rgba(210,106,78,.5);
+    border-radius:22px;
+    padding:18px 22px 18px 8px;
+    margin-top:18px;
+    animation:rise .9s ease .48s both;
+  }
+  .lumi-wrap{
+    flex:none;
+    width:96px;
+    color:#5A6184;            /* trazo grafito, a juego con la paleta */
+  }
+  .lumi{width:100%;height:auto;display:block;animation:float 5.5s ease-in-out infinite;}
+  .important-text{
+    font-size:.98rem;
+    color:var(--ink);
+    line-height:1.55;
+  }
+  .important-label{
+    display:block;
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:1.08rem;
+    color:var(--clay-deep);
+    margin-bottom:3px;
+  }
+  .important-text a{
+    color:var(--clay-deep);
+    font-weight:700;
+    text-decoration:none;
+    border-bottom:1.5px solid rgba(210,106,78,.45);
+  }
+  @media (max-width:440px){
+    .lumi-wrap{width:74px;}
+    .important{padding-left:4px;gap:4px;}
+  }
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+
+  /* ---------- closing ---------- */
+  .closing{
+    text-align:center;
+    padding:38px 14px 8px;
+    animation:rise .9s ease .5s both;
+  }
+  .closing p{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:clamp(1.3rem,4vw,1.7rem);
+    color:var(--clay-deep);
+    line-height:1.4;
+  }
+  .closing span{
+    display:block;
+    font-family:'Mulish',sans-serif;
+    font-style:normal;
+    font-size:.92rem;
+    color:var(--ink-soft);
+    margin-top:16px;
+    max-width:42ch;
+    margin-inline:auto;
+  }
+
+  @keyframes rise{
+    from{opacity:0;transform:translateY(16px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow">No estás solo</span>
+    <h1>Sentirte solo <em>está bien</em>. Pero tiene solución.</h1>
+    <p class="lede">A veces nos sentimos solos aunque estemos rodeados de gente, y reconocerlo ya es un acto de valentía. <strong>Hay personas y espacios listos para escucharte de verdad</strong>, cuando tú decidas dar el paso.</p>
+  </header>
+
+  <section>
+    <div class="cat"><span class="dot"></span>Ansiedad, soledad y acompañamiento</div>
+    <ul>
+      <li>
+        <span class="name">La Voz Amiga Perú</span> — <a class="contact" href="tel:080041212">0800 4 1212</a>
+        <span class="desc">Voluntarios que te escuchan, sin juicios y de forma anónima, las 24 horas. Para cuando solo necesitas que alguien esté del otro lado.</span>
+      </li>
+      <li>
+        <span class="name">Sentido · Centro Peruano de Suicidología</span> — <a class="contact" href="https://sentido.pe" target="_blank" rel="noopener">sentido.pe</a>
+        <span class="desc">Psicólogos especializados en ansiedad, depresión y prevención del suicidio. Para un acompañamiento profesional que dura en el tiempo.</span>
+      </li>
+      <li>
+        <span class="name">Línea 113, opción 5 · MINSA</span> — <a class="contact" href="tel:113">marca 113</a> · WhatsApp <a class="contact" href="https://wa.me/51955557000" target="_blank" rel="noopener">955 557 000</a>
+        <span class="desc">Salud mental pública y gratuita, todo el día, todos los días. Para orientación ante ansiedad, tristeza o descontrol emocional.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="sage">
+    <div class="cat"><span class="dot"></span>Crisis y emergencia</div>
+    <ul>
+      <li>
+        <span class="name">INSM Honorio Delgado – Hideyo Noguchi</span> — <a class="contact" href="tel:013813695">381-3695</a>
+        <span class="desc">Consejería y emergencia psiquiátrica. Para momentos de riesgo que necesitan ayuda especializadas.</span>
+      </li>
+      <li>
+        <span class="name">Línea 107, opción 3 · EsSalud</span> — <a class="contact" href="tel:107">marca 107</a>
+        <span class="desc">Atención psicológica gratuita las 24 horas al día.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="cat"><span class="dot"></span>Niños, adolescentes y jóvenes</div>
+    <ul>
+      <li>
+        <span class="name">Fundación ANAR Perú</span> — <a class="contact" href="tel:080022210">0800-2-2210</a> · <a class="contact" href="mailto:ayuda@anarperu.org">ayuda@anarperu.org</a>
+        <span class="desc">Gratuita y confidencial, en castellano y quechua, las 24 horas. Para que ningún menor cargue solo lo que siente.</span>
+      </li>
+      <li>
+        <span class="name">Educación te escucha · MINEDU</span> — <a class="contact" href="https://educacionteescucha.minedu.gob.pe" target="_blank" rel="noopener">educacionteescucha.minedu.gob.pe</a>
+        <span class="desc">Soporte emocional para la comunidad educativa. Para estudiantes, familias y docentes de colegios públicos.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="sage">
+    <div class="cat"><span class="dot"></span>Adultos mayores</div>
+    <ul>
+      <li>
+        <span class="name">CIAM · Centros Integrales de Atención al Adulto Mayor</span>
+        <span class="desc">En municipalidades de todo el país (busca el de tu distrito). Para reencontrar compañía, talleres y vida en comunidad.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="cat"><span class="dot"></span>Población migrante y vulnerable</div>
+    <ul>
+      <li>
+        <span class="name">Centro de Apoyo Emocional · Unión Venezolana en Perú</span> — <a class="contact" href="https://unionvp.org" target="_blank" rel="noopener">unionvp.org</a>
+        <span class="desc">Atención psicológica gratuita y grupos de apoyo. Para población venezolana y peruana que lo necesite.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="sage">
+    <div class="cat"><span class="dot"></span>Violencia, cuando se cruza con la soledad</div>
+    <ul>
+      <li>
+        <span class="name">Línea 100 · Programa AURORA – MIMP</span> — <a class="contact" href="tel:100">marca 100</a>
+        <span class="desc">Gratuita, 24 horas, en castellano, quechua y aimara. Para quienes enfrentan violencia familiar o de género.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="apps amber">
+    <div class="cat"><span class="dot"></span>Apps de bienestar, un apoyo más</div>
+    <ul>
+      <li>
+        <a class="applink" href="https://www.calm.com" target="_blank" rel="noopener">Calm</a> y <a class="applink" href="https://insighttimer.com" target="_blank" rel="noopener">Insight Timer</a>
+        <span class="desc">Meditación, respiración y sonidos para calmar la mente. Para esos momentos en que necesitas bajar las revoluciones.</span>
+      </li>
+      <li>
+        <a class="applink" href="https://www.headspace.com" target="_blank" rel="noopener">Headspace</a>
+        <span class="desc">Programas guiados, varios en español. Para aprender a manejar el estrés a tu propio ritmo.</span>
+      </li>
+      <li>
+        <a class="applink" href="https://www.7cups.com" target="_blank" rel="noopener">7 Cups</a>
+        <span class="desc">Oyentes voluntarios, también en español. Para desahogarte cuando aún no te animas a hablar con un profesional.</span>
+      </li>
+    </ul>
+    <div class="note"><strong>Las apps acompañan, pero no reemplazan.</strong> Ninguna sustituye la atención de un profesional ni el calor de una conversación real. Si la soledad o la ansiedad son persistente, da el paso hacia una de las líneas de arriba.</div>
+  </section>
+
+  <div class="important">
+    <div class="lumi-wrap" aria-hidden="true">
+      <svg class="lumi" viewBox="0 0 140 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lumi, una medusa dibujada a lápiz, señalando con un tentáculo">
+        <defs>
+          <filter id="pencil" x="-20%" y="-20%" width="140%" height="150%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.018 0.024" numOctaves="3" seed="7" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
+        <g filter="url(#pencil)" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <!-- campana -->
+          <path d="M20 92 C18 46 50 24 70 24 C90 24 122 46 120 92"/>
+          <path d="M20 92 Q33 101 46 92 Q59 83 72 92 Q86 101 99 92 Q110 85 120 92"/>
+          <!-- carita -->
+          <circle cx="60" cy="60" r="3.4" fill="currentColor" stroke="none"/>
+          <circle cx="84" cy="60" r="3.4" fill="currentColor" stroke="none"/>
+          <circle cx="46" cy="66" r="1.4" fill="currentColor" stroke="none"/>
+          <path d="M60 70 Q72 80 84 70"/>
+          <!-- tentáculos colgando -->
+          <path d="M30 93 C26 110 34 122 30 142"/>
+          <circle cx="30" cy="143" r="2.7"/>
+          <path d="M50 94 C46 112 54 124 50 146"/>
+          <circle cx="50" cy="147" r="2.7"/>
+          <path d="M70 94 C66 113 74 125 70 150"/>
+          <circle cx="70" cy="151" r="2.7"/>
+          <path d="M90 94 C94 112 86 124 92 146"/>
+          <circle cx="92" cy="147" r="2.7"/>
+          <!-- tentáculo alzado que señala "Si es urgente" -->
+          <path d="M104 90 C122 84 131 66 132 45"/>
+          <circle cx="132" cy="44" r="3"/>
+        </g>
+      </svg>
+    </div>
+    <p class="important-text">
+      <span class="important-label">Si es urgente</span>
+      Si la situación es de riesgo inmediato, llama al <a href="tel:113">113 (opción 5)</a> o acude a la emergencia del hospital más cercano.
+    </p>
+  </div>
+
+  <div class="closing">
+    <p>“No estás solo. Y aunque hoy cueste creerlo, aquí seguiremos recordándotelo hasta que puedas sentirlo.”</p>
+  </div>
+
+</div>
+</body>
+</html>
